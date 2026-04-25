@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Company Dashboard</h1>
+
+<a href="/company/create_drive">Create Placement Drive</a>
+
+<hr>
+
+<h3>Your Drives</h3>
+{% for drive in drives %}
+    <p>
+        {{ drive.title }} - {{ drive.status }}
+        <a href="/company/edit_drive/{{ drive.id }}">Edit</a>
+        <a href="/company/delete_drive/{{ drive.id }}">Delete</a>
+        <a href="/company/applications/{{ drive.id }}">Applications</a>
+    </p>
+{% endfor %}
+{% endblock %}

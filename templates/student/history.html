@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Application History</h1>
+
+{% if apps %}
+    {% for app in apps %}
+        <p>
+            Drive ID: {{ app.drive_id }} |
+            Status: {{ app.status }}
+        </p>
+    {% endfor %}
+{% else %}
+    <p>No applications found.</p>
+{% endif %}
+
+<a href="/student/dashboard">Back to Dashboard</a>
+{% endblock %}

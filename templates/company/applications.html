@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Applications for This Drive</h1>
+
+{% if apps %}
+    {% for app in apps %}
+        <p>
+            Student ID: {{ app.student_id }} |
+            Status: {{ app.status }}
+
+            <a href="/update_application/{{ app.id }}/Shortlisted">Shortlist</a>
+            <a href="/update_application/{{ app.id }}/Selected">Select</a>
+            <a href="/update_application/{{ app.id }}/Rejected">Reject</a>
+        </p>
+    {% endfor %}
+{% else %}
+    <p>No applications yet.</p>
+{% endif %}
+
+<a href="/company/dashboard">Back to Dashboard</a>
+{% endblock %}

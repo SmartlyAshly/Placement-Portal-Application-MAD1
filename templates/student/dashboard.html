@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Student Dashboard</h1>
+
+<a href="/student/history">View Application History</a>
+<br><br>
+
+<h3>Available Placement Drives</h3>
+
+{% if drives %}
+    {% for drive in drives %}
+        <p>
+            {{ drive.title }} - {{ drive.status }}
+            <a href="/apply/{{ drive.id }}">Apply</a>
+        </p>
+    {% endfor %}
+{% else %}
+    <p>No approved drives available.</p>
+{% endif %}
+{% endblock %}

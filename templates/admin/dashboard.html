@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<h3>Statistics</h3>
+<p>Total Students: {{ students }}</p>
+<p>Total Companies: {{ companies_count }}</p>
+<p>Total Drives: {{ drives_count }}</p>
+<p>Total Applications: {{ applications }}</p>
+
+<hr>
+
+<h3>Pending Company Approvals</h3>
+{% for company in companies %}
+    {% if not company.approved %}
+        <p>
+            {{ company.name }} ({{ company.email }})
+            <a href="/approve_company/{{ company.id }}">Approve</a>
+            <a href="/blacklist/{{ company.id }}">Blacklist</a>
+        </p>
+    {% endif %}
+{% endfor %}
+
+<hr>
+
+<h3>Placement Drives</h3>
+{% for drive in drives %}
+    <p>
+        {{ drive.title }} - {{ drive.status }}
+        {% if drive.status == "Pending" %}
+            <a href="/approve_drive/{{ drive.id }}">Approve</a>
+        {% endif %}
+    </p>
+{% endfor %}
+{% endblock %}
